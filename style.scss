@@ -2,14 +2,20 @@ $color-primario: blue;
 $color-secundario: red;
 $color-fondo: white;
 
+@mixin prefix($property, $value) {
+    -webkit-#{$property}: $value;
+    -moz-#{$property}: $value;
+    #{$property}: $value;
+}
+
 @keyframes fadeInDesplazamiento {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        @include prefix(transform, translateY(20px));
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        @include prefix(transform, translateY(0));
     }
 }
 
@@ -22,6 +28,11 @@ body {
 header {
     background-color: #cccccc;
     padding: 10px;
+
+    @supports (position: sticky) {
+        position: sticky;
+        top: 0;
+    }
 
     nav {
         ul {
@@ -62,7 +73,7 @@ header {
             border: 2px solid $color-primario;
             padding: 15px;
             width: 150px;
-            animation: fadeInDesplazamiento 1s ease;
+            @include prefix(animation, fadeInDesplazamiento 1s ease);
 
             h3 {
                 color: $color-secundario;
