@@ -1,0 +1,77 @@
+$color-primario: blue;
+$color-secundario: red;
+$color-fondo: white;
+
+@keyframes fadeInDesplazamiento {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body {
+    background-color: $color-fondo;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+header {
+    background-color: #cccccc;
+    padding: 10px;
+
+    nav {
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 20px;
+
+            li {
+                a {
+                    color: $color-primario;
+                    text-decoration: none;
+                    transition: color 0.3s ease 0.1s;
+
+                    &:hover {
+                        color: $color-secundario;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.servicios {
+    padding: 20px;
+
+    h2 {
+        color: $color-primario;
+    }
+
+    .contenedor-tarjetas {
+        display: flex;
+        gap: 15px;
+
+        .tarjeta {
+            border: 2px solid $color-primario;
+            padding: 15px;
+            width: 150px;
+            animation: fadeInDesplazamiento 1s ease;
+
+            h3 {
+                color: $color-secundario;
+                margin-top: 0;
+            }
+
+            p {
+                color: black;
+            }
+        }
+    }
+}
